@@ -10,8 +10,10 @@ cmake_minimum_required(VERSION 3.4.1)
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/../jniLibs/${ANDROID_ABI})
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -s")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -s")
 aux_source_directory(src/main/cpp/ DIR_LIB_SOURCE)
-add_library (log4a-lib SHARED ${DIR_LIB_SOURCE})
+add_library (flushwriter SHARED ${DIR_LIB_SOURCE})
 include_directories(src/main/cpp/includes)
 
 # Searches for a specified prebuilt library and stores the path as a
@@ -32,7 +34,7 @@ find_library( # Sets the name of the path variable.
 # build script, prebuilt third-party libraries, or system libraries.
 
 target_link_libraries( # Specifies the target library.
-                       log4a-lib
+                       flushwriter
 
                        # Links the target library to the log library
                        # included in the NDK.

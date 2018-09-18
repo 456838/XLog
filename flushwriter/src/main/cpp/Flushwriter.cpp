@@ -6,7 +6,7 @@
 
 #include "includes/LogBuffer.h"
 
-static const char* const kClassDocScanner = "me/pqpo/librarylog4a/LogBuffer";
+static const char* const kClassDocScanner = "com/salton123/io/FlushWriter";
 
 static char* openMMap(int buffer_fd, size_t buffer_size);
 
