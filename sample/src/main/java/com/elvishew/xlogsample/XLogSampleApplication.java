@@ -86,6 +86,5 @@ public class XLogSampleApplication extends Application {
 
         // For future usage: partial usage in MainActivity.
         globalFilePrinter = filePrinter;
-        LogInit.init(this);
     }
 }

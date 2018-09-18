@@ -2,6 +2,10 @@ package me.pqpo.librarylog4a;
 
 import android.util.Log;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.net.UnknownHostException;
+
 /**
  * Created by pqpo on 2017/11/16.
  */
@@ -23,7 +27,7 @@ public class LogBuffer {
         try {
             ptr = initNative(bufferPath, capacity, logPath, compress);
         }catch (Exception e) {
-            Log.e(TAG, Log4a.getStackTraceString(e));
+            Log.e(TAG, getStackTraceString(e));
         }
     }
 
@@ -33,7 +37,7 @@ public class LogBuffer {
                 changeLogPathNative(ptr, logPath);
                 this.logPath = logPath;
             }catch (Exception e) {
-                Log.e(TAG, Log4a.getStackTraceString(e));
+                Log.e(TAG, getStackTraceString(e));
             }
         }
     }
@@ -59,7 +63,7 @@ public class LogBuffer {
             try {
                 writeNative(ptr, log);
             }catch (Exception e) {
-                Log.e(TAG, Log4a.getStackTraceString(e));
+                Log.e(TAG, getStackTraceString(e));
             }
         }
     }
@@ -69,7 +73,7 @@ public class LogBuffer {
             try {
                 flushAsyncNative(ptr);
             }catch (Exception e) {
-                Log.e(TAG, Log4a.getStackTraceString(e));
+                Log.e(TAG, getStackTraceString(e));
             }
         }
     }
@@ -79,10 +83,29 @@ public class LogBuffer {
             try {
                 releaseNative(ptr);
             }catch (Exception e) {
-                Log.e(TAG, Log4a.getStackTraceString(e));
+                Log.e(TAG, getStackTraceString(e));
             }
             ptr = 0;
         }
+    }
+    
+    public static String getStackTraceString(Throwable tr) {
+        if (tr == null) {
+            return "";
+        }
+        Throwable t = tr;
+        while (t != null) {
+            if (t instanceof UnknownHostException) {
+                return "";
+            }
+            t = t.getCause();
+        }
+
+        StringWriter sw = new StringWriter();
+        PrintWriter pw = new PrintWriter(sw);
+        tr.printStackTrace(pw);
+        pw.flush();
+        return sw.toString();
     }
 
     static {

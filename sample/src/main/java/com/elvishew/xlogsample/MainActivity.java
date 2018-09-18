@@ -44,21 +44,6 @@ import com.elvishew.xlog.XLog;
 import com.elvishew.xlog.printer.AndroidPrinter;
 import com.elvishew.xlog.printer.Printer;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-
-import me.pqpo.librarylog4a.Log4a;
-import me.pqpo.librarylog4a.appender.AbsAppender;
-import me.pqpo.librarylog4a.appender.AndroidAppender;
-import me.pqpo.librarylog4a.appender.Appender;
-import me.pqpo.librarylog4a.appender.FileAppender;
-import me.pqpo.librarylog4a.formatter.Formatter;
-import me.pqpo.librarylog4a.logger.AppenderLogger;
-
-import static com.elvishew.xlogsample.LogInit.BUFFER_SIZE;
-
 public class MainActivity extends AppCompatActivity {
 
     private static final String MESSAGE = "Simple message";
@@ -274,7 +259,6 @@ public class MainActivity extends AppCompatActivity {
      * Print the configured log.
      */
     private void printLog() {
-        performanceTest(1);
         Logger.Builder builder = new Logger.Builder();
 
         String tag = tagView.getText().toString();
@@ -335,55 +319,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void performanceTest(int times) {
-        // Log4a.release();
-        // AppenderLogger logger = new AppenderLogger.Builder().create();
-        // logger.addAppender(createLog4aFileAppender());
-        // Log4a.setLogger(logger);
-        // for (int i = 0; i < 1000; i++) {
-            Log4a.i("salton", MESSAGE);
-        // }
-        // Log4a.flush();
-
-        // Log4a.setLogger(logger);
-        // logger.addAppender(createAndroidLogAppender());
-        // Log4a.release();
-        // border.postDelayed(new Runnable() {
-        //     @Override
-        //     public void run() {
-        //         Log4a.release();
-        //     }
-        // }, 1000);
-        //
-        // LogInit.init(this);
-    }
-
-    private Appender createLog4aFileAppender() {
-        File log = LogInit.getLogDir(this);
-        File cacheFile = new File(log, "test.logCache");
-        File logFile = new File(log, "log4aTest.txt");
-        cacheFile.delete();
-        logFile.delete();
-        FileAppender.Builder fileBuild = new FileAppender.Builder(this)
-                .setLogFilePath(logFile.getAbsolutePath())
-                .setBufferSize(BUFFER_SIZE)
-                // .setFormatter(new Formatter() {
-                //     @Override
-                //     public String format(int logLevel, String tag, String msg) {
-                //         return msg;
-                //     }
-                // })
-                .setBufferFilePath(cacheFile.getAbsolutePath());
-        return fileBuild.create();
-    }
-
-    private Appender createAndroidLogAppender() {
-        return new AndroidAppender.Builder().create();
-    }
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log4a.release();
+        // printLog();
+        // XLog.i("ondestory");
+        XLog.st(5).i("hello  onDestory");
     }
 }
