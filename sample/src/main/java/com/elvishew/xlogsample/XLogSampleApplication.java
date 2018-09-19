@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.salton123.logsample;
+package com.elvishew.xlogsample;
 
 import android.app.Application;
 import android.os.Environment;
@@ -74,7 +74,7 @@ public class XLogSampleApplication extends Application {
         Printer filePrinter = new FilePrinter                      // Printer that print the log to the file system
                 .Builder(new File(Environment.getExternalStorageDirectory(), "xlogsample").getPath())       // Specify the path to save log file
                 .fileNameGenerator(new DateFileNameGenerator())        // Default: ChangelessFileNameGenerator("log")
-                // .backupStrategy(new MyBackupStrategy())             // Default: FileSizeBackupStrategy(1024 * 1024)
+//                 .backupStrategy(new MyBackupStrategy())             // Default: FileSizeBackupStrategy(1024 * 1024)
                 // .cleanStrategy(new FileLastModifiedCleanStrategy(MAX_TIME))     // Default: NeverCleanStrategy()
                 .logFlattener(new ClassicFlattener())                  // Default: DefaultFlattener
                 .build();

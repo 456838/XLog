@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.salton123.logsample;
+package com.elvishew.xlogsample;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -138,6 +138,20 @@ public class MainActivity extends AppCompatActivity {
                 requestPermission();
             }
         }
+        if (isPrintTest()) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    while (true) {
+                        XLog.st(5).i("hello  onDestory");
+                    }
+                }
+            }).start();
+        }
+    }
+
+    private boolean isPrintTest() {
+        return true;
     }
 
     private boolean hasPermission() {

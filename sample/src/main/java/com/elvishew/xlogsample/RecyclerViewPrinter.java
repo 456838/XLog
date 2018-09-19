@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.salton123.logsample;
+package com.elvishew.xlogsample;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

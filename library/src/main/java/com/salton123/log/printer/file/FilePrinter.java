@@ -418,7 +418,7 @@ public class FilePrinter implements Printer {
 
             // Create buffered writer.
             try {
-                logBuffer = new FlushWriter(logFile.getAbsolutePath() + "_buf", 4096, logFile.getAbsolutePath(), false);
+                logBuffer = new FlushWriter(logFile.getParent() + File.separator + "logbuf", 4096 * 8, logFile.getAbsolutePath(), false);
                 // bufferedWriter = new BufferedWriter(new FileWriter(logFile, true));
             } catch (Exception e) {
                 e.printStackTrace();
