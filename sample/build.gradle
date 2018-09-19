@@ -6,7 +6,7 @@ android {
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion as Integer
         targetSdkVersion rootProject.ext.android.targetSdkVersion as Integer
-        applicationId "com.elvishew.xlogsample"
+        applicationId "com.salton123.logsample"
         versionCode 1
         versionName "1.0"
     }

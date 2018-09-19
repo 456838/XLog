@@ -202,22 +202,22 @@ Log.isLoggable(String, int);
 Log.getStackTraceString(Throwable);
 ```
 ### 迁移
-如果你有一个大工程正在用 [Android Log]，并且很难将所有对 [Android Log] 的使用都换成 [XLog]，那么你可以使用兼容 API，简单地将所有 'android.util.Log' 替换成 'com.elvishew.xlog.XLog.Log'.
+如果你有一个大工程正在用 [Android Log]，并且很难将所有对 [Android Log] 的使用都换成 [XLog]，那么你可以使用兼容 API，简单地将所有 'android.util.Log' 替换成 'com.salton123.log.XLog.Log'.
 (**为了更好的性能，尽量不要使用兼容 API**)
 #### Linux/Cygwin:
 ```shell
-grep -rl "android.util.Log" <your-source-directory> | xargs sed -i "s/android.util.Log/com.elvishew.xlog.XLog.Log/g"
+grep -rl "android.util.Log" <your-source-directory> | xargs sed -i "s/android.util.Log/com.salton123.log.XLog.Log/g"
 ```
 
 #### Mac
 ```shell
-grep -rl "android.util.Log" <your-source-directory> | xargs sed -i "" "s/android.util.Log/com.elvishew.xlog.XLog.Log/g"
+grep -rl "android.util.Log" <your-source-directory> | xargs sed -i "" "s/android.util.Log/com.salton123.log.XLog.Log/g"
 ```
 
 #### Android Studio
 在 'Project' 窗口里，切换到 'Project Files' 标签，然后右键点击你的源码目录。
 在出现的菜单里，点击 'Replace in Path...' 选项。
-在弹出的对话框里，'Text to find' 区域填上 'android.util.Log'，'Replace with' 区域填个 'com.elvishew.xlog.XLog.Log'，然后点击 'Find'。
+在弹出的对话框里，'Text to find' 区域填上 'android.util.Log'，'Replace with' 区域填个 'com.salton123.log.XLog.Log'，然后点击 'Find'。
 
 ## 待开发
 * [x] 打印任意对象: XLog.d(Object) （v1.1.0 开始支持）

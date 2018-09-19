@@ -14,17 +14,17 @@
  * limitations under the License.
  */
 
-package com.elvishew.xlog;
+package com.salton123.log;
 
-import com.elvishew.xlog.formatter.border.BorderFormatter;
-import com.elvishew.xlog.formatter.message.json.JsonFormatter;
-import com.elvishew.xlog.formatter.message.object.ObjectFormatter;
-import com.elvishew.xlog.formatter.message.throwable.ThrowableFormatter;
-import com.elvishew.xlog.formatter.message.xml.XmlFormatter;
-import com.elvishew.xlog.formatter.stacktrace.StackTraceFormatter;
-import com.elvishew.xlog.formatter.thread.ThreadFormatter;
-import com.elvishew.xlog.interceptor.Interceptor;
-import com.elvishew.xlog.internal.SystemCompat;
+import com.salton123.log.formatter.border.BorderFormatter;
+import com.salton123.log.formatter.message.json.JsonFormatter;
+import com.salton123.log.formatter.message.object.ObjectFormatter;
+import com.salton123.log.formatter.message.throwable.ThrowableFormatter;
+import com.salton123.log.formatter.message.xml.XmlFormatter;
+import com.salton123.log.formatter.stacktrace.StackTraceFormatter;
+import com.salton123.log.formatter.thread.ThreadFormatter;
+import com.salton123.log.interceptor.Interceptor;
+import com.salton123.log.internal.SystemCompat;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -33,13 +33,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static com.elvishew.xlog.LogLevel.ALL;
-import static com.elvishew.xlog.LogLevel.DEBUG;
-import static com.elvishew.xlog.LogLevel.ERROR;
-import static com.elvishew.xlog.LogLevel.INFO;
-import static com.elvishew.xlog.LogLevel.NONE;
-import static com.elvishew.xlog.LogLevel.VERBOSE;
-import static com.elvishew.xlog.LogLevel.WARN;
+import static com.salton123.log.LogLevel.ALL;
+import static com.salton123.log.LogLevel.DEBUG;
+import static com.salton123.log.LogLevel.ERROR;
+import static com.salton123.log.LogLevel.INFO;
+import static com.salton123.log.LogLevel.NONE;
+import static com.salton123.log.LogLevel.VERBOSE;
+import static com.salton123.log.LogLevel.WARN;
 import static org.junit.Assert.assertTrue;
 
 public class XLogTest {

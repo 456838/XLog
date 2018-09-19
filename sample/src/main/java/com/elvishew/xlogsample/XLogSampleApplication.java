@@ -14,20 +14,20 @@
  * limitations under the License.
  */
 
-package com.elvishew.xlogsample;
+package com.salton123.logsample;
 
 import android.app.Application;
 import android.os.Environment;
 
-import com.elvishew.xlog.LogConfiguration;
-import com.elvishew.xlog.LogLevel;
-import com.elvishew.xlog.XLog;
-import com.elvishew.xlog.flattener.ClassicFlattener;
-import com.elvishew.xlog.interceptor.BlacklistTagsFilterInterceptor;
-import com.elvishew.xlog.printer.AndroidPrinter;
-import com.elvishew.xlog.printer.Printer;
-import com.elvishew.xlog.printer.file.FilePrinter;
-import com.elvishew.xlog.printer.file.naming.DateFileNameGenerator;
+import com.salton123.log.LogConfiguration;
+import com.salton123.log.LogLevel;
+import com.salton123.log.XLog;
+import com.salton123.log.flattener.ClassicFlattener;
+import com.salton123.log.interceptor.BlacklistTagsFilterInterceptor;
+import com.salton123.log.printer.AndroidPrinter;
+import com.salton123.log.printer.Printer;
+import com.salton123.log.printer.file.FilePrinter;
+import com.salton123.log.printer.file.naming.DateFileNameGenerator;
 
 import java.io.File;
 

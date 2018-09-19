@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.elvishew.xlog;
+package com.salton123.log;
 
-import com.elvishew.xlog.printer.Printer;
+import com.salton123.log.printer.Printer;
 
 import java.util.ArrayList;
 import java.util.List;

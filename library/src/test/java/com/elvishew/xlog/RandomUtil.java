@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.elvishew.xlog;
+package com.salton123.log;
 
 import java.util.Random;
 

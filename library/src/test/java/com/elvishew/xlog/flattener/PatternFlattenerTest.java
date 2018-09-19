@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.elvishew.xlog.flattener;
+package com.salton123.log.flattener;
 
 import org.junit.Test;
 

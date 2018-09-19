@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.elvishew.xlog;
+package com.salton123.log;
 
-import com.elvishew.xlog.printer.Printer;
+import com.salton123.log.printer.Printer;
 
 import org.junit.Test;
 
@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static com.elvishew.xlog.LogLevel.VERBOSE;
+import static com.salton123.log.LogLevel.VERBOSE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 

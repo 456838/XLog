@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-package com.elvishew.xlog.printer;
+package com.salton123.log.printer;
 
-import com.elvishew.xlog.AssertUtil;
-import com.elvishew.xlog.LogItem;
-import com.elvishew.xlog.LogLevel;
-import com.elvishew.xlog.RandomUtil;
-import com.elvishew.xlog.XLog;
-import com.elvishew.xlog.XLogUtil;
+import com.salton123.log.AssertUtil;
+import com.salton123.log.LogItem;
+import com.salton123.log.LogLevel;
+import com.salton123.log.RandomUtil;
+import com.salton123.log.XLog;
+import com.salton123.log.XLogUtil;
 
 import org.junit.Before;
 import org.junit.Test;

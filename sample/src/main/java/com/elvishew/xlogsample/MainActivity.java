@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.elvishew.xlogsample;
+package com.salton123.logsample;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -38,11 +38,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.elvishew.xlog.LogLevel;
-import com.elvishew.xlog.Logger;
-import com.elvishew.xlog.XLog;
-import com.elvishew.xlog.printer.AndroidPrinter;
-import com.elvishew.xlog.printer.Printer;
+import com.salton123.log.LogLevel;
+import com.salton123.log.Logger;
+import com.salton123.log.XLog;
+import com.salton123.log.printer.AndroidPrinter;
+import com.salton123.log.printer.Printer;
 
 public class MainActivity extends AppCompatActivity {
 

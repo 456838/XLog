@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.elvishew.xlogsample;
+package com.salton123.logsample;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,8 +23,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.elvishew.xlog.LogLevel;
-import com.elvishew.xlog.printer.Printer;
+import com.salton123.log.LogLevel;
+import com.salton123.log.printer.Printer;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

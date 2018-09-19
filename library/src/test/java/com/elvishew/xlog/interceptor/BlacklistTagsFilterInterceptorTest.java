@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package com.elvishew.xlog.interceptor;
+package com.salton123.log.interceptor;
 
-import com.elvishew.xlog.LogItem;
-import com.elvishew.xlog.LogLevel;
+import com.salton123.log.LogItem;
+import com.salton123.log.LogLevel;
 
 import org.junit.Before;
 import org.junit.Test;
