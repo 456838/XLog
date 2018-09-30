@@ -1,0 +1,102 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+apply plugin: 'maven'
+
+def siteUrl = 'https://github.com/456838/saltonFramework'
+def gitUrl = 'https://github.com/456838/saltonFramework.git'
+group = "com.salton123"
+version = "0.0.0.2"
+android {
+    compileSdkVersion "${rootProject.ext.android.compileSdkVersion}" as Integer
+    buildToolsVersion "${rootProject.ext.android.buildToolsVersion}"
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion as Integer
+        targetSdkVersion rootProject.ext.android.targetSdkVersion as Integer
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+//    implementation project(':flushwriter')
+}
+
+install {
+    repositories.mavenInstaller {
+        // This generates POM.xml with proper parameters
+        pom {
+            project {
+                packaging 'aar'
+                name 'xlog'
+                description 'Extended from xlog、Log4a、mars/xlog，more concise and easy to use'
+                // #CONFIG# // project title
+                url siteUrl
+                // Set your license
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'salton'
+                        // #CONFIG# // your user id (you can write your nickname)
+                        name 'salton'
+                        // #CONFIG# // your user name
+                        email 'newsalton@outlook.com'
+                        // #CONFIG# // your email
+                    }
+                }
+                scm {
+                    connection gitUrl
+                    developerConnection gitUrl
+                    url siteUrl
+                }
+            }
+        }
+    }
+}
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+artifacts {
+    archives sourcesJar
+}
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    configurations = ['archives']
+    pkg {
+        repo = "saltonFramework"
+        name = "xlog"
+        // #CONFIG# project name in jcenter
+        websiteUrl = siteUrl
+        vcsUrl = gitUrl
+        licenses = ["Apache-2.0"]
+        publish = true
+    }
+}
+repositories {
+    mavenCentral()
+}
+
+//publish {
+//    userOrg = '456838'//bintray.com用户名
+//    groupId = 'com.salton123.log'//jcenter上的路径
+//    artifactId = 'xlog'//项目名称
+//    publishVersion = '0.0.0.1'//版本号
+//    desc = 'Extended from xlog、Log4a、mars/xlog，more concise and easy to use'
+//    website = 'https://github.com/456838/XLog.git'
+//}
+
+// ./gradlew clean build bintrayUpload -PbintrayUser=456838 -PbintrayKey=e2adbe5095b993e39e1fde558564eee4b8c0bffc -PdryRun=false
