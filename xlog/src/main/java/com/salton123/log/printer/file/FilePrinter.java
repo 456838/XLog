@@ -155,12 +155,16 @@ public class FilePrinter implements Printer {
      * Clean log files if should clean follow strategy
      */
     private void cleanLogFilesIfNecessary() {
-        File logDir = new File(folderPath);
-        File[] files = logDir.listFiles();
-        for (File file : files) {
-            if (cleanStrategy.shouldClean(file)) {
-                file.delete();
+        try {
+            File logDir = new File(folderPath);
+            File[] files = logDir.listFiles();
+            for (File file : files) {
+                if (cleanStrategy.shouldClean(file)) {
+                    file.delete();
+                }
             }
+        } catch (Exception e) {
+
         }
     }
 
