@@ -1,12 +1,14 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'maven'
 
 def siteUrl = 'https://github.com/456838/saltonFramework'
 def gitUrl = 'https://github.com/456838/saltonFramework.git'
 group = "com.salton123"
-version = "0.0.0.4"
+version = "0.0.0.5"
 android {
     compileSdkVersion "${rootProject.ext.android.compileSdkVersion}" as Integer
     buildToolsVersion "${rootProject.ext.android.buildToolsVersion}"
@@ -24,6 +26,7 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.2.51"
 //    implementation project(':flushwriter')
 }
 
