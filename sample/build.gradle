@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
-
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion "${rootProject.ext.android.compileSdkVersion}" as Integer
     buildToolsVersion "${rootProject.ext.android.buildToolsVersion}"
@@ -24,4 +25,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:1.2.51"
 }
