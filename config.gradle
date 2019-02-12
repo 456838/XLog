@@ -1,7 +1,7 @@
 ext {
     android = [
             compileSdkVersion: 27,
-            buildToolsVersion: "27.0.3",
+            buildToolsVersion: "26.0.1",
             minSdkVersion    : 14,
             targetSdkVersion : 27,
             versionCode      : 1,
@@ -9,7 +9,7 @@ ext {
     ]
 
     dependVersion = [
-            androidSupportSdkVersion: "27.0.1",
+            androidSupportSdkVersion: "26.0.1",
             retrofitSdkVersion      : "2.3.0",
             glideSdkVersion         : "4.0.0",
             rxJava                  : "2.1.5",

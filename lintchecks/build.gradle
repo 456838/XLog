@@ -1,0 +1,20 @@
+apply plugin: 'java'
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly 'com.android.tools.lint:lint-api:26.2.1'
+    compileOnly 'com.android.tools.lint:lint-checks:26.2.1'
+}
+
+
+jar {
+    manifest{
+        attributes('Lint-Registry-v2': 'com.salton123.lintchecks.XLogIssueRegistry')
+    }
+}
+
+configurations {
+    lintJarOutput
+}
+
+defaultTasks 'assemble'
