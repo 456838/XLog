@@ -18,19 +18,22 @@ import java.util.Date;
  */
 public class FilePrinter implements Printer {
     private static final String TAG = "xlog.FilePrinter";
-    private XLogConfig config;
     private String fileName = "xlog.txt";
     private String bakExt = ".bak";
     private Writer mWriter = new Writer();
     private String saveLogFilePath;
     private String path;
     private long logDefaultSplitSize;
+    private long logDeleteDelayDay;
 
     public FilePrinter(XLogConfig config) {
-        this.config = config;
         saveLogFilePath = config.getSavePath() + File.separator + fileName;
         path = config.getSavePath();
         logDefaultSplitSize = config.getLogDefaultSplitSize();
+        if (logDefaultSplitSize == 0) {
+            logDefaultSplitSize = 1;
+        }
+        logDeleteDelayDay = config.getLogDeleteDelayDay() * 24 * 60 * 60 * 1000;
         mWriter.open(path, fileName);
     }
 
@@ -40,7 +43,7 @@ public class FilePrinter implements Printer {
             Log.e(TAG, "SDCard Not Available");
             return;
         }
-        Date date = new Date();
+
         File dirFile = new File(path);
         if (!dirFile.exists()) {
             dirFile.mkdirs();
@@ -58,29 +61,30 @@ public class FilePrinter implements Printer {
             long fileSize = fileLength >>> 20;    //转为m
             Log.i(TAG, "fileLength:" + fileLength + ",fileSize:"
                     + fileSize + ",logDefaultSplitSize:" + logDefaultSplitSize);
-            if (fileSize > logDefaultSplitSize) {
+
+            if (fileSize >= logDefaultSplitSize) {
                 //删除大于10天的文件
                 deleteOldLogs();
+                if (mWriter.isOpened()) {
+                    mWriter.close();
+                }
                 SimpleDateFormat simpleDateFormate = new SimpleDateFormat("-MM-dd-kk-mm-ss");
-                String fileExt = simpleDateFormate.format(date);
+                String fileExt = simpleDateFormate.format(new Date());
                 StringBuilder sb = new StringBuilder(path);
                 sb.append(File.separator).append(fileName).append(fileExt)
                         .append(bakExt);
                 File fileNameTo = new File(sb.toString());
                 logFile.renameTo(fileNameTo);
-                if (mWriter.isOpened) {
-                    mWriter.close();
-                }
                 mWriter.open(path, fileName);
             }
         }
-        String strLog = new SimpleDateFormat("yyyy:MM:dd kk:mm:ss.SSS").format(date);
+        String strLog = new SimpleDateFormat("yyyy:MM:dd kk:mm:ss.SSS").format(new Date());
         StringBuffer sb = new StringBuffer(strLog);
         sb.append(' ');
         sb.append(msg);
         sb.append('\n');
         strLog = sb.toString();
-        if (!mWriter.isOpened) {
+        if (!mWriter.isOpened()) {
             mWriter.open(path, fileName);
         }
         mWriter.appendLog(strLog);
@@ -97,7 +101,7 @@ public class FilePrinter implements Printer {
             for (File file : files) {
                 if (file.getName().endsWith(bakExt)) {
                     long lastModifiedTime = file.lastModified();
-                    if (now - lastModifiedTime > config.getLogDeleteDelayDay()) {
+                    if (now - lastModifiedTime > logDeleteDelayDay) {
                         file.delete();
                     }
                 }
@@ -109,7 +113,10 @@ public class FilePrinter implements Printer {
         String lastFileName = null;
         File file = null;
         FlushWriter logBuffer = null;
-        boolean isOpened = false;
+
+        public boolean isOpened() {
+            return logBuffer != null;
+        }
 
         private boolean open(String folderPath, String newFileName) {
             lastFileName = newFileName;
