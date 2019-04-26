@@ -30,7 +30,7 @@ public class FilePrinter implements Printer {
         this.config = config;
         saveLogFilePath = config.getSavePath() + File.separator + fileName;
         path = config.getSavePath();
-        logDefaultSplitSize = config.getLogDefaultSplitSize() * 24 * 60 * 60 * 1000;
+        logDefaultSplitSize = config.getLogDefaultSplitSize();
         mWriter.open(path, fileName);
     }
 
@@ -56,7 +56,8 @@ public class FilePrinter implements Printer {
         } else {
             long fileLength = logFile.length();
             long fileSize = fileLength >>> 20;    //转为m
-            Log.i(TAG, "fileLength:" + fileLength + ",fileSize:" + fileSize);
+            Log.i(TAG, "fileLength:" + fileLength + ",fileSize:"
+                    + fileSize + ",logDefaultSplitSize:" + logDefaultSplitSize);
             if (fileSize > logDefaultSplitSize) {
                 //删除大于10天的文件
                 deleteOldLogs();
@@ -129,7 +130,7 @@ public class FilePrinter implements Printer {
             }
             try {
                 logBuffer = new FlushWriter(file.getAbsolutePath() + "_buf",
-                        8192 * 4, file.getAbsolutePath(), false);
+                        8192 * 2, file.getAbsolutePath(), false);
             } catch (Exception e) {
                 e.printStackTrace();
                 lastFileName = null;

@@ -4,8 +4,6 @@ import android.os.Environment;
 
 import java.io.File;
 
-import android.os.Process;
-
 /**
  * User: newSalton@outlook.com
  * Date: 2019/4/26 10:18 PM
@@ -59,19 +57,19 @@ public class Utils {
             int line, String msg,
             String methodName) {
         StringBuilder sb = new StringBuilder(msg);
-        sb.append("(P:");
-        sb.append(Process.myPid());
-        sb.append(")");
-        sb.append("(T:");
-        sb.append(Thread.currentThread().getId());
-        sb.append(")");
-        sb.append("(C:");
-        sb.append(objClassName(obj));
-        sb.append(")");
-        sb.append("(M:");
+        // sb.append("(P:");
+        // sb.append(Process.myPid());
+        // sb.append(")");
+        // sb.append("(T:");
+        // sb.append(Thread.currentThread().getId());
+        // sb.append(")");
+        // sb.append("(C:");
+        // sb.append(objClassName(obj));
+        // sb.append(")");
+        sb.append(" (M:");
         sb.append(methodName);
         sb.append(")");
-        sb.append(" at (");
+        sb.append(" (");
         sb.append(filename);
         sb.append(":");
         sb.append(line);

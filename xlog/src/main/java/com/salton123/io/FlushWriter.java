@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 
 public class FlushWriter {
 
-    private static final String TAG = "FlushWriter";
+    private static final String TAG = "xlog.FlushWriter";
 
     private long ptr = 0;
     private String logPath;
